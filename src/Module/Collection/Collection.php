@@ -6,11 +6,14 @@ use UzDevid\Qdrant\Http\Conflux\QdrantConfluxInterface;
 use UzDevid\Qdrant\Http\Exception\NotSupportedException;
 use UzDevid\Qdrant\Http\Module\Collection\Request\GetRequest;
 use UzDevid\Qdrant\Http\Module\Collection\Request\ListRequest;
+use UzDevid\Qdrant\Http\Trait\ConfluxTrait;
 use UzDevid\Qdrant\Module\Collection\CollectionInterface;
 use UzDevid\Qdrant\Module\Collection\Input\Vector;
 use UzDevid\Qdrant\Module\Collection\Output\CollectionData;
 
 readonly final class Collection implements CollectionInterface {
+    use ConfluxTrait;
+
     /**
      * @param QdrantConfluxInterface $conflux
      */
@@ -20,7 +23,7 @@ readonly final class Collection implements CollectionInterface {
     }
 
     public function get(string $name): CollectionData {
-        return $this->conflux->withRequest(new GetRequest($name))->send();
+        return $this->send(new GetRequest($name));
     }
 
     /**
@@ -45,7 +48,7 @@ readonly final class Collection implements CollectionInterface {
     }
 
     public function list(): array {
-        return $this->conflux->withRequest(new ListRequest())->send();
+        return $this->send(new ListRequest());
     }
 
     /**
