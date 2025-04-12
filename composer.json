@@ -1,9 +1,12 @@
 {
-  "name": "uzdevid/---",
-  "description": "---",
+  "name": "uzdevid/qdrant-http-client",
+  "description": "Qdrant HTTP Client",
   "type": "library",
   "keywords": [
-    "php"
+    "php",
+    "uzdevid",
+    "qdrant",
+    "qdrant php http client"
   ],
   "license": "MIT",
   "authors": [
@@ -13,19 +16,22 @@
     }
   ],
   "require": {
-    "php": ">=8.3"
+    "php": ">=8.3",
+    "uzdevid/qdrant-sdk": "dev-main",
+    "uzdevid/conflux-http": "^1.0",
+    "yiisoft/hydrator": "^1.6"
   },
   "require-dev": {
     "phpunit/phpunit": "^10.5"
   },
   "autoload": {
     "psr-4": {
-      "UzDevid\\---\\": "src"
+      "UzDevid\\Qdrant\\Http\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "UzDevid\\---\\Tests\\": "tests"
+      "UzDevid\\Qdrant\\Http\\Tests\\": "tests"
     }
   }
 }
