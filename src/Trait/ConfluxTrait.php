@@ -19,7 +19,7 @@ trait ConfluxTrait {
      * @throws QdrantException
      * @throws ServiceErrorException
      */
-    public function send(RequestInterface $request) {
+    private function send(RequestInterface $request) {
         try {
             return $this->conflux->withRequest($request)->send();
         } catch (ConfluxClientErrorException $e) {
